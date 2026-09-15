@@ -116,6 +116,8 @@ A method reveals its strength only after it enters a life. Relationships end and
 
 Products, company visits, and real-world projects involving Han Xiankai live on [Author Projects and Practice](projects.md). That page states the relationship, purpose, update date, and non-sponsorship status. Commercial relationships do not change the guide's recommendation standard; by default, the site uses no ads, analytics, or trackers.
 
+You can also follow me on [X](https://x.com/ourleap) for updates on AI practice, English learning, and personal growth.
+
 ## Project Boundaries
 
 - This is an open-content project, not open-source software in the OSI sense. Text and author-created content use **CC BY-NC 4.0**; site configuration, checks, and build code use **MIT**. See [Licensing](https://github.com/byoungd/up/blob/master/LICENSE.md).
