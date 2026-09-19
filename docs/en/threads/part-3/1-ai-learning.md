@@ -1,7 +1,7 @@
 ---
 title: "Learning Anything with AI: From Real Problems to Verifiable Delivery"
 description: Based on Han Xiankai's product failure, recovery, and return to AI practice, this chapter builds a practical loop of problems, baselines, practice, delivery, verification, and review.
-updated: 2026-08-24
+updated: 2026-09-01
 sources_checked: 2026-08-24
 ---
 
@@ -11,9 +11,18 @@ My name is Han Xiankai, also known online as Li Pu. Many readers first met me th
 
 The method comes from an uncomfortable fact: an answer can be complete while a product has no users; code can run while its data and security have no foundation; a person can sound clever in a chat and still be unable to perform alone after the chat closes. A real learning result survives without AI: you can explain, judge, perform, transfer, and leave evidence another person can inspect.
 
+## Quick Overview
+
+- define the real outcome before deciding where AI enters;
+- compare an unaided baseline, an assisted version, and a delayed independent retest;
+- put sources, permissions, privacy, cost, and ownership into the task boundary;
+- save state at the end so the next session does not depend on chat memory.
+
 ## Where the Method Comes From
 
 The following are personal records, not research findings or a universal promise. Read each case in four steps: what happened, which judgment failed, what principle followed, and what you can practise today.
+
+If you are analysing a public profile, an AI project experience, or your own failure record, copy the [AI Case Review Template](../../templates/ai-case-review.md) first. Separate source, facts, judgment, outcome, and transferable principle. The template cannot prove an outcome for you, but it can stop a narrative from quietly becoming a conclusion.
 
 ### 2015–2016: From a Dead End to Real Users
 
@@ -75,7 +84,7 @@ Without step one, AI turns a wish into an answer. Without step two, you cannot s
 
 ## One-page Task Brief
 
-Copy this into a private project directory. Redact sensitive material; never send passwords, identity documents, customer records, or third-party private data to a general model.
+Copy the complete [AI Task Brief](../../templates/ai-task-brief.md) into a private project directory. The block below keeps only the minimum fields. Redact sensitive material; never send passwords, identity documents, customer records, or third-party private data to a general model.
 
 ```markdown
 # AI Task Brief
@@ -144,6 +153,35 @@ Do not claim to remember another session or turn inference into fact.
 
 For high-risk content, “not yet confirmed” is more professional than a fluent guess.
 
+## Three Comparisons: Prove What AI Changed
+
+Use the [AI Learning Log](../../templates/ai-learning-log.md) to keep three samples of the same task:
+
+1. **Unaided baseline**: complete it independently and record time, quality, bottlenecks, and confidence;
+2. **Assisted version**: let AI do only the agreed work and record prompts, sources, accepted/rejected suggestions, and rework;
+3. **Delayed independent version**: after 3–7 days, close the chat and answer key, then repeat under a related condition.
+
+| Comparison result | Cautious interpretation |
+| --- | --- |
+| Assisted and independent versions both improve | AI may have supplied useful scaffolding that remained yours |
+| Assisted improves while independent regresses | The product improved, but a critical step may have been outsourced |
+| Time falls while rework and errors rise | You gained speed and accumulated “speed debt” |
+| Confidence rises while accuracy is flat or lower | Calibrate confidence before granting the tool more access |
+
+Record task completion, quality, independent performance, rework, cost, and transfer. One comparison cannot prove causation, but it is more inspectable than “AI feels useful”.
+
+## Common Failures and Handover
+
+| Failure point | Signal | Immediate action |
+| --- | --- | --- |
+| Fabricated fact | No source, version, or data location can be found | Stop sharing; return to a primary source and mark it unverified |
+| Requirement drift | The answer grows complete but stops answering the original task | Paste the brief again and ask for conflicts and unknowns |
+| Privacy leak | Input contains customer, identity, health, or key material | Stop upload; redact or use an approved environment |
+| False completion | Code runs without boundary tests, or prose reads well without citations | Run the smallest acceptance test; fluency is not completion |
+| Session dependency | You cannot explain the next step outside the chat | Save it in the [AI Learning Log](../../templates/ai-learning-log.md) and [Learning State](../../templates/learning-state.md) |
+
+At handover, save the current goal, completed work and evidence location, unconfirmed facts, errors and risks, cost, smallest next task, and stop/rollback condition. A chat window is a temporary workspace, not the project’s only archive.
+
 ## From Learning to Delivery
 
 When a task becomes code or a team project, add three gates:
@@ -201,11 +239,19 @@ Deleting a file does not delete history, shared links, exports, caches, or backu
 - export the material and state, then write a retrospective and next-cycle decision;
 - if evidence is weak, narrow the problem, change the audience, or stop instead of adding prompts.
 
+Put the three comparisons and cycle result into the [90-Day Cycle Map](../../templates/90-day-cycle.md), changing one variable in the next cycle.
+
 ## Sources and Verification
 
-- **Personal experience**: mainly [My Story](../part-4/my-story.md), [Entrepreneurship](../part-2/entrepreneurship.md), and [Author Projects and Practice](../../projects.md). These are personal records, not universal rules.
+- **Personal experience**: mainly [My Story](../part-2/my-story.md), [Entrepreneurship](../part-2/entrepreneurship.md), and [Author Projects and Practice](../../projects.md). These are personal records, not universal rules.
 - **Product information**: official help pages listed in [Learning English with AI](../part-1/7-ai.md); features, regions, and plans change.
 - **Project status**: China Token Cloud, `token.love`, public articles, and physical-industry plans carry affiliations or unverified scope; none is an independent review or proof of revenue.
-- **Checked**: 24 August 2026. Recheck official product pages, external links, and project status before the next update.
+- **Last checked**: 24 August 2026. Recheck official product pages, external links, and project status before updating or using this guidance.
 
-Previous: [Learning English with AI](../part-1/7-ai.md) | Next: [AI Learning, Project Development, and Resource-layer Entrepreneurship](2-ai-development-and-resource-layer.md) | Template: [AI Task Brief](../../templates/ai-task-brief.md)
+## Closing: Keep the Ability with the Person
+
+AI readily creates more than wrong answers. It creates a premature sense of completion. The explanation is fluent, the code runs, the plan is arranged, and we begin to believe the problem has been understood. Answers can arrive much faster than judgment forms.
+
+Learning worth continuing should leave something the conversation cannot carry away: a more accurate question, a traceable source, a failed test, a judgment changed by evidence, an artifact another person can use, and a person who still knows what to do after the tool closes.
+
+Learning is not asking AI to arrive on your behalf. It is using the tool to reach what you could not yet see, then checking the ground yourself. Close the window, explain the work to a real person, complete the next step, and carry the result. If the ability follows you out of the conversation, it has begun to remain.

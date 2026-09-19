@@ -1,8 +1,8 @@
 ---
 title: AI Learning, Project Development, and Resource-layer Entrepreneurship
 description: Han Xiankai's path from learning with AI to building and operating an AI resource layer, with engineering, delivery, operations, and business results kept distinct.
-updated: 2026-08-24
-sources_checked: 2026-08-24
+updated: 2026-09-01
+sources_checked: 2026-09-01
 ---
 
 # AI Learning, Project Development, and Resource-layer Entrepreneurship
@@ -13,11 +13,11 @@ This is not a story about getting rich easily with AI, and it contains no return
 
 ## Keep Fact, Practice, and Result Separate
 
-- **Already true**: I serve as chairman of China Token Cloud Computing Co., Ltd. The public description of `token.love` focuses on unified multi-model access, routing, metering, and deployment.
+- **Already true**: I serve as chairman of China Token Cloud Computing Co., Ltd. The current homepage describes `token.love` as a unified AI gateway for enterprise and government-related scenarios, listing model access, routing and failover, usage metering, audit trails, and private/offline deployment.
 - **In practice**: I use AI to learn, decompose requirements, develop projects, write tests, organise documentation, and deliver work while testing those methods in team and enterprise settings.
 - **Still unverified**: whether customers will keep paying, whether unit economics will hold, whether supplier changes can be managed, and whether revenue can cover the risk.
 
-When fact, judgment, and aspiration are mixed together, an entrepreneurship essay becomes an advertisement. Separating them makes an honest retrospective possible.
+When fact, judgment, and aspiration are mixed together, an entrepreneurship essay becomes an advertisement. Separating them makes an honest retrospective possible. When you analyse a public experience, use the [AI Case Review Template](../../templates/ai-case-review.md) to record the source and facts before writing judgment or transfer.
 
 ## How the 2022 Failure Changed Today's Gates
 
@@ -106,6 +106,8 @@ Mark missing information and inference. Recommend only one slice that can be ver
 
 Before release preserve a version, change summary, migration steps, monitored signals, rollback trigger, owner, and user notice. Review by severity for requirement drift, data loss, permission bypass, injection, races, error handling, performance, maintainability, and test gaps.
 
+Complete the [AI Project Scorecard](../../templates/ai-project-scorecard.md) after each pilot or release and keep an unaided baseline, assisted version, and delayed independent retest. Without all three, you cannot tell whether the tool created ability, outsourcing, or rework.
+
 ## 3. What Is the AI Resource Layer?
 
 Models provide capabilities and applications provide the results users see. Between them lies infrastructure that makes capabilities accessible, controllable, measurable, and sustainable. I call this the **AI resource layer**.
@@ -148,7 +150,7 @@ The strongest model is not always the right model if it is unstable, unauditable
 
 ## 4. China Token Cloud and token.love: A Business Path in Practice
 
-China Token Cloud Computing Co., Ltd. is the company in which I currently serve as chairman. Public material describes `token.love` as a unified multi-model access, routing, metering, and deployment service for teams and organisations. This is a public product description, not an endorsement from any third party, and it does not replace formal documentation, contracts, or a customer's own security review.
+China Token Cloud Computing Co., Ltd. is the company in which I currently serve as chairman. The current homepage describes `token.love` as a unified AI gateway for enterprise and government-related scenarios, listing model access, routing and failover, usage metering, audit trails, and private/offline deployment. This is a homepage product-positioning statement, not an endorsement from any third party, and it does not replace formal documentation, compliance approval, contracts, or a customer's own security review.
 
 From a resource-layer perspective, the path can be expressed as:
 
@@ -176,6 +178,8 @@ Produce a one-page problem brief, not a one-page AI value statement.
 A credible pilot has scope, sample, non-goals, data boundary, owners, dates, acceptance criteria, failure exit, and a cost ceiling. Preserve the old-process baseline: human time, error rate, waiting time, rework, current cost, and user satisfaction.
 
 During the pilot record model calls, routing, latency, failures, human takeovers, support hours, data exceptions, rework, and user feedback. Recording generated content alone cannot prove business improvement.
+
+Use the [AI Project Scorecard](../../templates/ai-project-scorecard.md) to log test conditions, cost, independent performance, and release gates by version, so the pilot does not end as a single demo.
 
 ### 5.3 Acceptance and handover
 
@@ -336,9 +340,15 @@ I still want to make money because revenue is one form of evidence that a value 
 
 ## Sources and Verification
 
-- **Personal experience**: the 2022 failure, 2023 recovery, and 2026 return to AI are documented in [My Story](../part-4/my-story.md) and [Entrepreneurship](../part-2/entrepreneurship.md).
+- **Personal experience**: the 2022 failure, 2023 recovery, and 2026 return to AI are documented in [My Story](../part-2/my-story.md) and [Entrepreneurship](../part-2/entrepreneurship.md).
 - **Project affiliations**: China Token Cloud, `token.love`, `ku0.com`, and the WeChat articles are disclosed in [Author Projects and Real-world Practice](../../projects.md); they are not independent reviews.
 - **Commercial claims**: charging models, cost ledgers, and the twelve-week route are methods to test, not proof of revenue, customer count, profit, or investment return.
-- **Checked**: 24 August 2026. Recheck product capability, external articles, service scope, and policy before the next update.
+- **Official pages checked**: 1 September 2026. The homepage positioning for `token.love` and `ku0.com`, as well as the external article links in this chapter, were reachable; verify exact capability, service scope, region, policy, and contract commitments again in the real project.
 
-Previous: [Learning Anything with AI](1-ai-learning.md) | Disclosure: [Author Projects and Real-world Practice](../../projects.md)
+## Return the Method to Daily Life
+
+This chapter should not leave a reader among product names, architecture diagrams, and charging interfaces. Its useful remainder is a slower, more honest working posture: name the problem, write the boundary, and place a run, a cost, and a failure where they can be inspected.
+
+Whether a project continues is still answered by users, teams, agreements, time, and responsibility. Visit [Author Projects and Real-world Practice](../../projects.md) to check relationships, status, and evidence boundaries; or move directly into [Part IV: Practice and Recovery](../part-4/practice-and-recovery.md) and bring the judgment here back to one small task, one week's rhythm, and one action that can be restarted.
+
+Technology can lay a road quickly. That does not mean a person has travelled it. What carries into the next stretch is not one elegant demonstration, but the ability to keep learning, delivering, and revising under real conditions.

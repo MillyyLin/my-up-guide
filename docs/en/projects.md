@@ -1,19 +1,32 @@
 ---
 title: Author Projects and Real-world Practice
 description: A central disclosure of products, companies, and field work involving the author, including relationship, purpose, date, and non-sponsorship status.
-updated: 2026-08-24
+updated: 2026-09-01
 ---
 
 # Author Projects and Real-world Practice
 
-This page centralises projects in which Han Xiankai has a direct role so that commercial relationships do not blend into learning-method recommendations. It is disclosure, not a purchase, investment, or return promise.
+This page centralises projects in which Han Xiankai has a direct role so that commercial relationships do not blend into learning-method recommendations. It is a disclosure, not a purchase, investment, or return promise.
+
+To analyse a public experience mentioned here, use the [AI Case Review Template](templates/ai-case-review.md) to separate source, facts, judgment, and unknown outcomes first; project disclosure is not an independent audit.
+
+## Status and Evidence Boundaries
+
+| Status | Meaning | How a reader should use it |
+| --- | --- | --- |
+| **Author affiliation** | The author has a stated role or material relationship with a company, product, or article | Treat it as self-disclosure, not an independent review |
+| **In practice** | Work has begun, but impact, scale, or sustainability is still being tested | Look for samples, costs, user feedback, and failure records |
+| **Historical material** | An older article, product page, or personal memory | Use it for context, not as current guidance |
+| **Unverified** | A plan, goal, or judgment without enough public evidence | Wait for formal documents, agreements, users, and time |
+
+Project status can change. Each item keeps its own checked date; a page update means the disclosure text was reorganised, not that a product result changed.
 
 ## China Token Cloud and token.love
 
 - **Relationship**: Han Xiankai serves as chairman of China Token Cloud Computing Co., Ltd.
-- **Purpose**: `token.love` is described as a multi-model gateway, routing, metering, and deployment service for teams and organisations.
+- **Purpose**: The current homepage describes `token.love` as a unified AI gateway for enterprise and government-related scenarios, listing model access, routing and failover, usage metering, audit trails, and private/offline deployment.
 - **Relationship to this guide**: both are maintained by the same author; this is not third-party sponsorship.
-- **Checked**: 2026-08-16. Capabilities and compliance scope must be verified against the current [token.love](https://token.love/) documentation and contract.
+- **Checked**: 2026-08-31. The capability list reflects the homepage checked that day; exact service and compliance scope must still be verified in the formal [token.love](https://token.love/) documentation, approvals, and contract.
 
 ![Archived token.love product page](../assets/token-love-domain.jpg)
 
@@ -37,16 +50,23 @@ The links point to public WeChat pages and were checked on 24 August 2026; platf
 ## ku0.com
 
 - **Relationship**: the author participates in the operation and presentation of the project.
-- **Purpose**: information about AI-related resources and enterprise services.
+- **Purpose**: The current homepage describes it as an AI resource directory for mainland China businesses and developers, covering relay services, account recharge, asset transactions, model tools, and official references.
 - **Relationship to this guide**: this is neither an independent review nor a recommendation without a material relationship.
-- **Checked**: 2026-08-16. Availability, region, plan, and compliance statements must be verified on [ku0.com](https://ku0.com/) and in written terms.
+- **Checked**: 2026-08-31. Categories and scope were checked against the homepage that day; availability, region, plans, transactions, and compliance statements must still be verified on [ku0.com](https://ku0.com/) and in written terms.
 
 ## AI and Physical-industry Practice
 
 On 16 June 2026, the author visited Alibaba Cloud's Hangzhou headquarters as a company representative and recorded plans to explore AI in agriculture and other physical industries, including free community training. This is a direction and personal commitment, not an Alibaba Cloud endorsement or evidence of completed outcomes.
 
-![Visit to Alibaba Cloud headquarters](../assets/aliyun-hangzhou-2026-06-16-1.jpg)
+![Visit to Alibaba Cloud headquarters](../assets/aliyun-hangzhou-2026-06-16-1.webp)
 
 ## Recommendation Policy
 
 Core chapters assess tools by task, evidence, privacy, and transfer. An affiliated product receives no higher evidence status and never replaces official documentation, independent comparison, or the reader's security review. Hidden sponsorship is not accepted. Any future paid relationship must identify the party, date, and affected scope next to the claim.
+
+## Verification Order
+
+1. Start with current formal documentation, contracts, licences, and applicable policy.
+2. Ask how the result will be accepted, how cost is calculated, and how work stops on failure.
+3. Treat personal narrative and public profiles as leads, not customer cases or proof of return.
+4. For customer, identity, health, or commercial data, confirm permission, minimum necessary scope, and deletion method first.
