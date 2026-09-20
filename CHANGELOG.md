@@ -2,6 +2,20 @@
 
 All notable project-level changes are documented here. Content pages retain their own `updated` date.
 
+## 2026-09-20
+
+- 根据 OpenAI 智能体实践指南、2025-06-18 MCP 规范和 Anthropic 2026-01 评测文章更新 AI 实操内容：补充工具互操作、授权撤回、模型基线、过程记录与最终环境结果。
+- AI 任务简报与评测模板新增 MCP/外部工具范围、授权、过程记录和环境结果字段；同步中英双语核心 AI 章节与来源登记。
+
+## 2026-09-19
+
+- 新增中英实践路线图、五篇创业/自律/AI 实操手册与三张带完整示例的模板，保留五部书稿主线并建立双向入口。
+- 电子书章节按导航的 publication 类型选择，解除附录对固定数组位置的依赖，新增实操内容进入 EPUB/PDF。
+- 修复 PDF 长中文标题与代码块越出版心的问题，更新中文字体子集并加入七项排版回归；同步双语书稿并检查代表页。
+- 加强 AI 来源时效、真实日期、HTML 图片与引用链接检查；README 路径转换共用实现，增加独立回归测试。
+- 修复依赖审计中的 3 项高危告警：Sharp 0.35.4 和限定 Markdown 工具范围的 smol-toml 1.7.1；避免回退 Markdown 工具主版本。
+- 合并本地外链提取与最新远端的独立探针、失效地址守卫，保留最新词汇来源修正。
+
 ## Unreleased
 
 ### 2026-09-07 link-audit hardening

@@ -85,7 +85,19 @@
 - [AI Learning Log](templates/ai-learning-log.md)
 - [AI Case Review](templates/ai-case-review.md)
 - [AI Project Scorecard](templates/ai-project-scorecard.md)
+- [Startup Experiment](templates/startup-experiment.md)
+- [Consistency Plan](templates/consistency-plan.md)
+- [AI Evaluation Record](templates/ai-evaluation.md)
 - [Life Practice Toolkit](templates/life-practice-toolkit.md)
+
+## Business, Discipline, and AI Practice
+
+- [Practice Map](practice.md)
+- [From Problems to First Customers](threads/practice/customer-discovery.md)
+- [A Sustainable Small Business](threads/practice/sustainable-business.md)
+- [Discipline and Consistency in Practice](threads/practice/discipline-and-consistency.md)
+- [AI Workflows](threads/practice/ai-workflows.md)
+- [AI Evaluation and Reliability](threads/practice/ai-evaluation.md)
 
 ## Archive
 

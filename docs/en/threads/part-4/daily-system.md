@@ -1,7 +1,7 @@
 ---
 title: "Daily System: Put Change into the Day"
 description: Use a minimum viable day, capacity budget, environment design, and interruption recovery to make learning sustainable in real life.
-updated: 2026-09-01
+updated: 2026-09-19
 ---
 
 # Daily System: Put Change into the Day
@@ -153,6 +153,8 @@ Do not rebuild every habit at once. Make one change each day:
 - **Day 7:** use the [Weekly Review Template](../../templates/weekly-review.md) to keep one useful design and delete one unnecessary demand.
 
 After seven days, you do not need a beautiful timetable. You need to know when starting is easier, what event makes the system lose its weight, and which small window deserves protection next week.
+
+If you still face “many plans but no start” or “an interruption with no clear way back,” use the two examples in [Discipline and Consistency in Practice](../practice/discipline-and-consistency.md) to turn this chapter's methods into one adjustment with acceptance criteria. Record the change and stopping conditions in a [Consistency Plan](../../templates/consistency-plan.md). Add only the experiment you need instead of rebuilding the whole daily arrangement.
 
 ## Closing: Leave a Way Back
 

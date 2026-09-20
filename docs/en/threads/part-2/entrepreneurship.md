@@ -1,7 +1,7 @@
 ---
 title: "Entrepreneurship: From Ambition to Purpose"
 description: A personal review of products, cash flow, technical debt, failure, recovery, and starting again, without offering a success formula or investment advice.
-updated: 2026-09-01
+updated: 2026-09-19
 ---
 
 # Entrepreneurship: From Ambition to Purpose
@@ -13,6 +13,8 @@ When I was younger, entrepreneurship meant opportunity, ambition, and a chance t
 People first found me through this English-learning repository. Others later read about the software company that failed, the health problems that followed, my return home, and the effort to begin again. Connected together, those events ask one question:
 
 > How many times must a person break before understanding where their abilities should be used?
+
+To apply these reflections to your own project, try [Customer Discovery](../practice/customer-discovery.md) and [Sustainable Delivery](../practice/sustainable-business.md), then record evidence for and against your hypothesis in a [Startup Experiment](../../templates/startup-experiment.md).
 
 ## Separate Memory, Review, and Plans
 

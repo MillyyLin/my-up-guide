@@ -1,12 +1,14 @@
 ---
 title: Rhythm Ledger Template
 description: Record one weekly question, minimum actions at different capacities, useful feedback, repeated resistance, and the next condition to change so a growth rhythm can be reviewed and resumed.
-updated: 2026-09-01
+updated: 2026-09-19
 ---
 
 # Rhythm Ledger Template
 
 Copy this ledger into a private note and use one page each week. It is not a streak table or a dashboard for scoring your character. It helps you see what deserves to stay, which condition needs to change, and how to return after an interruption.
+
+If the ledger has identified an obstacle, use the troubleshooting table and two examples in [Discipline and Consistency in Practice](../threads/practice/discipline-and-consistency.md), then define one change and its acceptance criteria in a [Consistency Plan](consistency-plan.md). That experiment card supplements this ledger. Return its conclusion to “This Week's Decision” without maintaining a separate schedule.
 
 Do not write passwords, identity documents, customer data, medical privacy, or unauthorised third-party information. When safety, health, money, or relationship risks are involved, contact a qualified professional or a trusted support person first.
 

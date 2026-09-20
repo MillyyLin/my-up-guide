@@ -1,7 +1,7 @@
 ---
 title: 工具箱总览：先选问题，再选工具
 description: 按起点、能力训练、AI 协作、作品交付、复盘与恢复分流全部模板，帮助读者用最少记录建立一次完整行动闭环。
-updated: 2026-09-02
+updated: 2026-09-19
 ---
 
 # 工具箱总览：先选问题，再选工具
@@ -32,6 +32,9 @@ updated: 2026-09-02
 | 有想法却没有可交付作品 | [作品简报与交付卡](artifact-brief.md) | [AI 项目评分卡](ai-project-scorecard.md) | 不能替你找到用户、承担责任或证明商业结果 |
 | 想分析一个人物或项目故事 | [AI 经历案例复盘](ai-case-review.md) | [叙事与证据篇](../threads/part-2/narrative-and-evidence.md) | 不能把公开叙事当成独立审计 |
 | 正在处理选择、注意力、关系或恢复 | [生活进阶工作表](life-practice-toolkit.md) | [选择篇](../threads/part-2/decision.md) · [注意力篇](../threads/part-3/3-attention-and-judgment.md) · [关系篇](../threads/part-2/relationships.md) · [恢复篇](../threads/part-2/recovery.md) | 不能替代医疗、心理、法律或财务专业支持 |
+| 需要验证创业想法而非继续加功能 | [创业实验卡](startup-experiment.md) | [客户验证实操](../threads/practice/customer-discovery.md) | 不能把赞美、免费试用或一次付款当成可持续需求 |
+| 想排查启动困难或做一次中断重启 | [持续行动计划](consistency-plan.md) | [自律与坚持实操](../threads/practice/discipline-and-consistency.md) | 不能把一次中断解释成意志或人格失败 |
+| 要判断 AI 新版本能否交付 | [AI 评测记录](ai-evaluation.md) | [AI 评测与可靠性](../threads/practice/ai-evaluation.md) | 不能用小样本或人工修订后的正确率保证线上可靠性 |
 
 ## 把工具串成一次闭环
 

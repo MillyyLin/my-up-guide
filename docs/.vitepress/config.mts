@@ -69,6 +69,9 @@ function splitSearchSections(file: string, html: string) {
     "/templates/english-diagnostic.md",
     "/templates/ai-task-brief.md",
     "/templates/ai-learning-log.md",
+    "/templates/startup-experiment.md",
+    "/templates/consistency-plan.md",
+    "/templates/ai-evaluation.md",
     "/threads/part-4/family-learning.md",
     "/threads/part-1/8-job-search-english.md",
     "/threads/part-1/grammar.md",
@@ -77,7 +80,9 @@ function splitSearchSections(file: string, html: string) {
     "/threads/part-1/2-vocabulary.md",
     "/threads/part-1/1-understanding.md",
   ].some((suffix) => normalizedFile.endsWith(suffix));
-  const headingOnly = [
+  const headingOnly = normalizedFile.includes("/threads/practice/") || [
+    "/docs/practice.md",
+    "/docs/en/practice.md",
     "/docs/README.md",
     "/docs/en/README.md",
     "/threads/part-0/reader-guide.md",
@@ -233,7 +238,7 @@ export default defineConfig({
         nav: [
           { text: "终身学习", link: "/templates/learning-state" },
           { text: "AI 学习", link: "/threads/part-3/1-ai-learning" },
-          { text: "项目实践", link: "/threads/part-3/2-ai-development-and-resource-layer" },
+          { text: "实践路线", link: "/practice" },
           { text: "英语专题", link: "/threads/part-1/0-cefr" },
         ],
         sidebar: toSidebar(zhNavigation),
@@ -267,7 +272,7 @@ export default defineConfig({
         nav: [
           { text: "Lifelong Learning", link: "/en/templates/learning-state" },
           { text: "AI Learning", link: "/en/threads/part-3/1-ai-learning" },
-          { text: "Project Practice", link: "/en/threads/part-3/2-ai-development-and-resource-layer" },
+          { text: "Practice Map", link: "/en/practice" },
           { text: "English", link: "/en/threads/part-1/0-cefr" },
         ],
         sidebar: toSidebar(enNavigation),

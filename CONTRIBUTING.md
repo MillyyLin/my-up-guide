@@ -10,6 +10,10 @@ Thank you for improving this open-content project. Contributions should make a c
 4. Run `npm run sync` after changing navigation, the Chinese homepage, or a Chinese word list.
 5. Run `npm run check`, `npm run docs:build`, and `npm run test:smoke`.
 
+`npm run check` starts with dependency-free content-checker regression tests. Run `npm run test:content` while changing validation or README transformation rules; Playwright only discovers `*.spec.mjs` browser tests.
+
+After changing PDF layout, run `python3 tests/pdf_layout_test.py` in the Python environment with `requirements-pdf.txt` installed. CI runs these layout regressions before validating the generated books.
+
 ## Content Standard
 
 - Separate research findings, personal experience, and hypotheses.
@@ -18,6 +22,8 @@ Thank you for improving this open-content project. Contributions should make a c
 - Do not present medical, legal, financial, mental-health, or safety content as professional advice.
 - Every public Chinese page needs a complete English counterpart, and vice versa. Preserve meaning rather than translating word for word.
 - Add `title`, `description`, and `updated: YYYY-MM-DD` frontmatter to new narrative pages.
+- Use real calendar dates for `updated` and `sources_checked`, no later than today in `Asia/Shanghai`. Keep translated pages on the same `updated` date.
+- Narrative files under `threads/` named `ai-...` or `<number>-ai...` require `sources_checked`; all declared source-review dates must be within 120 days. Set this date only after checking the sources, not merely after editing the page.
 - Write descriptive image alt text that conveys the scene or purpose; generic placeholders such as `image`, `photo`, or `hotel` are rejected. Decorative images should normally be omitted rather than given meaningless alt text.
 
 ## Navigation and Generated Files
@@ -27,6 +33,10 @@ Edit `docs/.vitepress/navigation.mjs` as the navigation source. `SUMMARY.md`, `d
 Edit Chinese word lists under `docs/threads/word-list/`; English list pages are generated. Edit `docs/README.md`; the root `README.md` mirror is generated with repository-relative links.
 
 CI rejects unsynchronised generated files.
+
+Add every public page to navigation in the same group and reading order as its translation. Content checks also verify that each route resolves to its declared source. Markdown references, local HTML links, and image `src` / `srcset` targets must resolve; examples in fenced code blocks are excluded.
+
+The repository README generator and validator share `scripts/lib/readme.mjs`. Update that helper and its regression tests when introducing a new homepage path pattern.
 
 ## Privacy and Media
 

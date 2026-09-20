@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { expect, test } from "@playwright/test";
@@ -29,6 +30,10 @@ const routesFromNavigation = (groups) =>
 const routes = [...routesFromNavigation(zhNavigation), ...routesFromNavigation(enNavigation)];
 const expectedBuildRevision = process.env.GITHUB_SHA || process.env.BUILD_REVISION || "local";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
+
+// SSR buttons are visible before VitePress imports the page and mounts Vue.
+// Wait for hydration before interacting, including after a full locale navigation.
+const waitForApp = (page) => page.waitForFunction(() => Boolean(document.querySelector("#app")?.__vue_app__));
 
 test("start here leads from the home page into the reader guide and prologue", () => {
   const zhStart = zhNavigation.find(({ text }) => text === "开始");
@@ -90,8 +95,8 @@ test("every public navigation route has one bilingual counterpart", () => {
 });
 
 test("reference collections follow the book and stay collapsed by default", () => {
-  expect(zhNavigation.slice(7).map(({ text }) => text)).toEqual(["工具箱", "旧文归档", "词表"]);
-  expect(enNavigation.slice(7).map(({ text }) => text)).toEqual(["Toolkit", "Archive", "Word Lists"]);
+  expect(zhNavigation.slice(7).map(({ text }) => text)).toEqual(["工具箱", "创业、自律与 AI 实操", "旧文归档", "词表"]);
+  expect(enNavigation.slice(7).map(({ text }) => text)).toEqual(["Toolkit", "Business, Discipline, and AI Practice", "Archive", "Word Lists"]);
   expect(toSidebar(zhNavigation).slice(0, 7).every(({ collapsed }) => collapsed === false)).toBe(true);
   expect(toSidebar(zhNavigation).slice(7).every(({ collapsed }) => collapsed === true)).toBe(true);
   expect(toSidebar(enNavigation).slice(0, 7).every(({ collapsed }) => collapsed === false)).toBe(true);
@@ -632,15 +637,15 @@ test("recovery separates safety, reduced load, and rebuilding before a bounded r
 
 test("the scheduled link audit checks authoritative sources and retires the 193-197 failure URLs", () => {
   const workflow = readFileSync(resolve(process.cwd(), ".github/workflows/links.yml"), "utf8");
-  for (const source of [
-    '"ATTRIBUTIONS.md"',
-    '"docs/README.md"',
-    '"docs/en/README.md"',
-    '"docs/threads/**/*.md"',
-    '"docs/en/threads/**/*.md"',
-  ]) {
-    expect(workflow).toContain(source);
+  expect(workflow).toContain("node scripts/extract-external-links.mjs > .external-links.md");
+  const extracted = execFileSync(process.execPath, ["scripts/extract-external-links.mjs"], {
+    cwd: process.cwd(), encoding: "utf8",
+  });
+  for (const source of ["ATTRIBUTIONS.md:", "docs/README.md:", "docs/en/README.md:",
+    "docs/threads/practice/ai-workflows.md:", "docs/en/threads/practice/ai-evaluation.md:"]) {
+    expect(extracted).toContain(source);
   }
+  expect(extracted).not.toContain("](threads/");
   for (const retiredUrl of [
     "scholarspace\\.manoa\\.hawaii\\.edu",
     "doi\\.org/10\\.64152/10125/66973",
@@ -989,6 +994,7 @@ test("legacy English story route redirects to the aligned Part II path", async (
 
 test("local search uses the current language and returns a result", async ({ page }) => {
   await page.goto("./");
+  await waitForApp(page);
   await page.getByRole("button", { name: "搜索", exact: true }).click();
   const zhSearchBox = page.locator(".VPLocalSearchBox");
   const zhInput = zhSearchBox.locator("input");
@@ -1011,6 +1017,7 @@ test("local search uses the current language and returns a result", async ({ pag
     enSearchButton.boundingBox(),
   ]);
   expect(enTitleBox?.x + (enTitleBox?.width || 0)).toBeLessThanOrEqual(enSearchButtonBox?.x || 0);
+  await waitForApp(page);
   await enSearchButton.click();
   const enSearchBox = page.locator(".VPLocalSearchBox");
   const enInput = enSearchBox.locator("input");
@@ -1022,6 +1029,7 @@ test("local search uses the current language and returns a result", async ({ pag
 
 test("page-level search keeps nested chapter text discoverable", async ({ page }) => {
   await page.goto("./");
+  await waitForApp(page);
   await page.getByRole("button", { name: "搜索", exact: true }).click();
   const zhSearchBox = page.locator(".VPLocalSearchBox");
   await zhSearchBox.locator("input").fill("十四天不是写作速成期限");
@@ -1029,6 +1037,7 @@ test("page-level search keeps nested chapter text discoverable", async ({ page }
 
   await page.keyboard.press("Escape");
   await page.goto("./en/");
+  await waitForApp(page);
   await page.getByRole("button", { name: "Search", exact: true }).click();
   const enSearchBox = page.locator(".VPLocalSearchBox");
   await enSearchBox.locator("input").fill("Fourteen days is not a writing-fluency deadline");
@@ -1037,6 +1046,7 @@ test("page-level search keeps nested chapter text discoverable", async ({ page }
 
 test("heading-only search keeps long-form chapters and tools discoverable without indexing their full prose", async ({ page }) => {
   await page.goto("./");
+  await waitForApp(page);
   await page.getByRole("button", { name: "搜索", exact: true }).click();
   const zhSearchBox = page.locator(".VPLocalSearchBox");
   await zhSearchBox.locator("input").fill("目标必须有到期日与退出门");
@@ -1084,6 +1094,7 @@ test("heading-only search keeps long-form chapters and tools discoverable withou
 
   await page.keyboard.press("Escape");
   await page.goto("./en/");
+  await waitForApp(page);
   await page.getByRole("button", { name: "Search", exact: true }).click();
   const enSearchBox = page.locator(".VPLocalSearchBox");
   await enSearchBox.locator("input").fill("Every Goal Needs an Expiry Date");
@@ -1132,6 +1143,7 @@ test("heading-only search keeps long-form chapters and tools discoverable withou
 
 test("Part I literary closings remain discoverable after bibliography pruning", async ({ page }) => {
   await page.goto("./");
+  await waitForApp(page);
   await page.getByRole("button", { name: "搜索", exact: true }).click();
   const zhSearchBox = page.locator(".VPLocalSearchBox");
   await zhSearchBox.locator("input").fill("听见声音背后的人");
@@ -1139,6 +1151,7 @@ test("Part I literary closings remain discoverable after bibliography pruning", 
 
   await page.keyboard.press("Escape");
   await page.goto("./en/");
+  await waitForApp(page);
   await page.getByRole("button", { name: "Search", exact: true }).click();
   const enSearchBox = page.locator(".VPLocalSearchBox");
   await enSearchBox.locator("input").fill("Hear the Person Behind the Sound");
@@ -1147,6 +1160,7 @@ test("Part I literary closings remain discoverable after bibliography pruning", 
 
 test("story and AI literary closings remain discoverable", async ({ page }) => {
   await page.goto("./");
+  await waitForApp(page);
   await page.getByRole("button", { name: "搜索", exact: true }).click();
   const zhSearchBox = page.locator(".VPLocalSearchBox");
   await zhSearchBox.locator("input").fill("重来不是凯旋");
@@ -1154,6 +1168,7 @@ test("story and AI literary closings remain discoverable", async ({ page }) => {
 
   await page.keyboard.press("Escape");
   await page.goto("./en/");
+  await waitForApp(page);
   await page.getByRole("button", { name: "Search", exact: true }).click();
   const enSearchBox = page.locator(".VPLocalSearchBox");
   await enSearchBox.locator("input").fill("Keep the Ability with the Person");
@@ -2315,4 +2330,32 @@ test("keyboard focus reaches navigation", async ({ page }) => {
   const focused = page.locator(":focus");
   await expect(focused).toBeVisible();
   await expect(focused).toHaveAttribute("href", /#VPContent|\/up\//);
+});
+
+
+test("practice paths connect the homepage, handbook, and copyable tools", async ({ page }) => {
+  for (const [prefix, map, heading, tool] of [
+    ["./", "实践路线图", "从问题到首批用户", "创业实验卡"],
+    ["./en/", "Practice Map", "From Problems to First Customers", "Startup Experiment"],
+  ]) {
+    await page.goto(prefix);
+    await page.locator("main").getByRole("link", { name: map, exact: true }).click();
+    await expect(page).toHaveURL(/\/practice$/);
+    await page.locator("main").getByRole("link", { name: heading, exact: true }).first().click();
+    await expect(page).toHaveURL(/\/threads\/practice\/customer-discovery$/);
+    await page.locator("main").getByRole("link", { name: new RegExp(tool, "i") }).first().click();
+    await expect(page).toHaveURL(/\/templates\/startup-experiment$/);
+    await expect(page.locator("main pre").first()).toBeVisible();
+  }
+});
+
+test("local search discovers the new AI evaluation handbook", async ({ page }) => {
+  await page.goto("./");
+  await waitForApp(page);
+  await page.locator(".VPNavBarSearch button").click();
+  await page.locator(".VPLocalSearchBox input").fill("AI 评测");
+  const result = page.locator('.VPLocalSearchBox a[href*="/threads/practice/ai-evaluation"]');
+  await expect(result.first()).toBeVisible();
+  await result.first().click();
+  await expect(page).toHaveURL(/\/threads\/practice\/ai-evaluation/);
 });

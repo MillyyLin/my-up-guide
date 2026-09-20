@@ -35,11 +35,13 @@ jobs:
             echo 'A retired URL from the 193-197 failure series has returned.' >&2
             exit 1
           fi
+      - name: Extract external links
+        run: node scripts/extract-external-links.mjs > .external-links.md
       - uses: lycheeverse/lychee-action@v2.9.0
         with:
           args: >-
             --no-progress
-            --accept 200..=399,403,429
+            --accept 200..=399,403,418,429
             --max-retries 3
             --retry-wait-time 5
             --timeout 30
@@ -50,17 +52,8 @@ jobs:
             --exclude "^https://(book|movie)\.douban\.com/"
             --exclude "^https://(token\.love|ku0\.com)/"
             --exclude "https://localhost"
-            "ATTRIBUTIONS.md"
-            "docs/README.md"
-            "docs/en/README.md"
-            "docs/projects.md"
-            "docs/en/projects.md"
-            "docs/reference/**/*.md"
-            "docs/en/reference/**/*.md"
-            "docs/templates/**/*.md"
-            "docs/en/templates/**/*.md"
-            "docs/threads/**/*.md"
-            "docs/en/threads/**/*.md"
+            --exclude "https://byoungd\.github\.io/up"
+            .external-links.md
           fail: true
       - name: Close stale external-link failure issues
         if: success()

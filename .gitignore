@@ -5,10 +5,12 @@ docs/.vitepress/cache/
 docs/.vitepress/dist/
 .codex-artifact-work/
 outputs/
+.external-links.md
 output/pdf/
 tmp/
 playwright-report/
 test-results/
+__pycache__/
 
 # local env files
 .env.local

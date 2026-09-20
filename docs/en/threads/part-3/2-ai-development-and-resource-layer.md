@@ -1,8 +1,8 @@
 ---
 title: AI Learning, Project Development, and Resource-layer Entrepreneurship
 description: Han Xiankai's path from learning with AI to building and operating an AI resource layer, with engineering, delivery, operations, and business results kept distinct.
-updated: 2026-09-01
-sources_checked: 2026-09-01
+updated: 2026-09-20
+sources_checked: 2026-09-20
 ---
 
 # AI Learning, Project Development, and Resource-layer Entrepreneurship
@@ -10,6 +10,8 @@ sources_checked: 2026-09-01
 My name is Han Xiankai, also known online as Li Pu. Many readers first found me through this English-learning project and later through my writing about software entrepreneurship, failure, recovery, and beginning again. I now disclose my role as chairman of China Token Cloud Computing Co., Ltd. and place the next stage of my work inside a more concrete question: **as AI becomes a general capability, how can an ordinary person move from learner to builder, then from builder to an entrepreneur in the resource layer?**
 
 This is not a story about getting rich easily with AI, and it contains no return promise. It is a working map under real-world testing: what has happened, what methods may transfer, and what business outcomes must still be answered by real users, real costs, real incidents, and time. When the company failed in 2022, I saw how features that looked like AI could hide missing data, weak architecture, and unclear responsibility. Today's gates grew out of that failure.
+
+Apply the engineering and business principles here through a small experiment in [Customer Discovery](../practice/customer-discovery.md), [Sustainable Business](../practice/sustainable-business.md), [AI Workflows](../practice/ai-workflows.md), or [Reliability Evaluation](../practice/ai-evaluation.md).
 
 ## Keep Fact, Practice, and Result Separate
 
@@ -113,6 +115,8 @@ Complete the [AI Project Scorecard](../../templates/ai-project-scorecard.md) aft
 Models provide capabilities and applications provide the results users see. Between them lies infrastructure that makes capabilities accessible, controllable, measurable, and sustainable. I call this the **AI resource layer**.
 
 It is more than reselling a model endpoint. It organises models, accounts, compute, data boundaries, and operating processes into a service a team can understand, use, and govern.
+
+As tool use and agent orchestration become common, the resource layer also has to handle interoperability and authorization boundaries. The [MCP specification](https://modelcontextprotocol.io/specification/2025-06-18) defines resources, prompts, and tools as composable connection capabilities, but it does not perform a system's security review. Before connecting an external server, list its data scope, write permissions, user consent, call records, and revocation path. A protocol reduces repeated integration work, not the cost of responsibility. In practice, use the [AI Workflows](../practice/ai-workflows.md) authorization gate and the [AI Evaluation](../practice/ai-evaluation.md) process/outcome record for a small pilot.
 
 ### 3.1 Capability map
 

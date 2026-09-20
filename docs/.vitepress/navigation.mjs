@@ -7,6 +7,7 @@ const page = (text, link, source = `${link.replace(/^\//, "")}.md`) => ({
 export const zhNavigation = [
   {
     text: "开始",
+    publication: "frontmatter",
     items: [
       page("人生进阶指南", "/", "README.md"),
       page("阅读指南：把书放回生活", "/threads/part-0/reader-guide"),
@@ -17,6 +18,7 @@ export const zhNavigation = [
   },
   {
     text: "第一部：打开输入",
+    publication: "body",
     items: [
       page("第一部导语：打开输入", "/threads/part-1/open-input"),
       page("CEFR 目标与自测", "/threads/part-1/0-cefr"),
@@ -33,6 +35,7 @@ export const zhNavigation = [
   },
   {
     text: "第二部：把自己放回生活",
+    publication: "body",
     items: [
       page("第二部导语：把自己放回生活", "/threads/part-2/return-to-life"),
       page("我的故事", "/threads/part-2/my-story"),
@@ -46,6 +49,7 @@ export const zhNavigation = [
   },
   {
     text: "第三部：借工具放大能力",
+    publication: "body",
     items: [
       page("第三部导语：借工具放大能力", "/threads/part-3/amplify-ability"),
       page("使用 AI 学习一切", "/threads/part-3/1-ai-learning"),
@@ -58,6 +62,7 @@ export const zhNavigation = [
   },
   {
     text: "第四部：实践与恢复",
+    publication: "body",
     items: [
       page("第四部导语：实践与恢复", "/threads/part-4/practice-and-recovery"),
       page("实践篇：先把第一周过完", "/threads/part-4/week-1"),
@@ -68,6 +73,7 @@ export const zhNavigation = [
   },
   {
     text: "第五部：行动与长期改变",
+    publication: "body",
     items: [
       page("第五部导语：行动与长期改变", "/threads/part-5/long-term-action"),
       page("行动篇：九十天，把生活交还给自己", "/threads/part-5/90-day-plan"),
@@ -77,12 +83,14 @@ export const zhNavigation = [
   },
   {
     text: "后记",
+    publication: "body",
     items: [
       page("进阶不是离开原来的自己", "/threads/part-6/afterword"),
     ],
   },
   {
     text: "工具箱",
+    publication: "appendix",
     items: [
       page("工具箱实战：AI 跨会话学习", "/templates/toolkit-walkthrough"),
       page("证据链模板", "/templates/evidence-chain"),
@@ -105,7 +113,22 @@ export const zhNavigation = [
       page("AI 学习记录", "/templates/ai-learning-log"),
       page("AI 经历案例复盘", "/templates/ai-case-review"),
       page("AI 项目评分卡", "/templates/ai-project-scorecard"),
+      page("创业实验卡", "/templates/startup-experiment"),
+      page("持续行动计划", "/templates/consistency-plan"),
+      page("AI 评测记录", "/templates/ai-evaluation"),
       page("生活进阶工作表", "/templates/life-practice-toolkit"),
+    ],
+  },
+  {
+    text: "创业、自律与 AI 实操",
+    publication: "appendix",
+    items: [
+      page("实践路线图", "/practice"),
+      page("从问题到首批用户", "/threads/practice/customer-discovery"),
+      page("可持续的小生意", "/threads/practice/sustainable-business"),
+      page("自律与坚持实操", "/threads/practice/discipline-and-consistency"),
+      page("AI 工作流", "/threads/practice/ai-workflows"),
+      page("AI 评测与可靠性", "/threads/practice/ai-evaluation"),
     ],
   },
   {
@@ -131,6 +154,7 @@ export const zhNavigation = [
 export const enNavigation = [
   {
     text: "Start Here",
+    publication: "frontmatter",
     items: [
       page("Life Level-up Guide", "/en/", "en/README.md"),
       page("Reader's Guide: Put the Book Back into Life", "/en/threads/part-0/reader-guide"),
@@ -141,6 +165,7 @@ export const enNavigation = [
   },
   {
     text: "Part I: Open Input",
+    publication: "body",
     items: [
       page("Part I Introduction: Open Input", "/en/threads/part-1/open-input"),
       page("CEFR Goals and Self-check", "/en/threads/part-1/0-cefr"),
@@ -157,6 +182,7 @@ export const enNavigation = [
   },
   {
     text: "Part II: Return to Life",
+    publication: "body",
     items: [
       page("Part II Introduction: Return to Life", "/en/threads/part-2/return-to-life"),
       page("My Story", "/en/threads/part-2/my-story"),
@@ -170,6 +196,7 @@ export const enNavigation = [
   },
   {
     text: "Part III: Amplify Ability",
+    publication: "body",
     items: [
       page("Part III Introduction: Amplify Ability", "/en/threads/part-3/amplify-ability"),
       page("Learning Anything with AI", "/en/threads/part-3/1-ai-learning"),
@@ -185,6 +212,7 @@ export const enNavigation = [
   },
   {
     text: "Part IV: Practice and Recovery",
+    publication: "body",
     items: [
       page("Part IV Introduction: Practice and Recovery", "/en/threads/part-4/practice-and-recovery"),
       page("Practice: Finish the First Week", "/en/threads/part-4/week-1"),
@@ -195,6 +223,7 @@ export const enNavigation = [
   },
   {
     text: "Part V: Long-Term Action",
+    publication: "body",
     items: [
       page("Part V Introduction: Long-Term Action", "/en/threads/part-5/long-term-action"),
       page("90-Day Action Plan", "/en/threads/part-5/90-day-plan"),
@@ -204,12 +233,14 @@ export const enNavigation = [
   },
   {
     text: "Afterword",
+    publication: "body",
     items: [
       page("Progress Is Not Leaving Yourself Behind", "/en/threads/part-6/afterword"),
     ],
   },
   {
     text: "Toolkit",
+    publication: "appendix",
     items: [
       page("Toolkit Walkthrough: AI Learning across Sessions", "/en/templates/toolkit-walkthrough"),
       page("Evidence Chain", "/en/templates/evidence-chain"),
@@ -232,7 +263,22 @@ export const enNavigation = [
       page("AI Learning Log", "/en/templates/ai-learning-log"),
       page("AI Case Review", "/en/templates/ai-case-review"),
       page("AI Project Scorecard", "/en/templates/ai-project-scorecard"),
+      page("Startup Experiment", "/en/templates/startup-experiment"),
+      page("Consistency Plan", "/en/templates/consistency-plan"),
+      page("AI Evaluation Record", "/en/templates/ai-evaluation"),
       page("Life Practice Toolkit", "/en/templates/life-practice-toolkit"),
+    ],
+  },
+  {
+    text: "Business, Discipline, and AI Practice",
+    publication: "appendix",
+    items: [
+      page("Practice Map", "/en/practice"),
+      page("From Problems to First Customers", "/en/threads/practice/customer-discovery"),
+      page("A Sustainable Small Business", "/en/threads/practice/sustainable-business"),
+      page("Discipline and Consistency in Practice", "/en/threads/practice/discipline-and-consistency"),
+      page("AI Workflows", "/en/threads/practice/ai-workflows"),
+      page("AI Evaluation and Reliability", "/en/threads/practice/ai-evaluation"),
     ],
   },
   {
@@ -256,13 +302,21 @@ export const enNavigation = [
 ];
 
 export function publicationSections(navigation, { frontMatter = "", appendices = "" } = {}) {
-  const [start, ...rest] = navigation;
+  const start = navigation.find((group) => group.publication === "frontmatter");
+  if (!start) throw new Error("Publication navigation requires a frontmatter group");
+  const isOpening = ({ source }) => /(?:^|\/)threads\/part-0\//.test(source);
+  const referencePages = start.items.filter((item) =>
+    !isOpening(item) && !/^(?:en\/)?README\.md$/.test(item.source),
+  );
   return [
-    { text: frontMatter, items: start.items.slice(1, 3) },
-    ...rest.slice(0, 6),
+    { text: frontMatter, items: start.items.filter(isOpening) },
+    ...navigation.filter((group) => group.publication === "body"),
     {
       text: appendices,
-      items: [...start.items.slice(3), ...navigation[7].items],
+      items: [
+        ...referencePages,
+        ...navigation.filter((group) => group.publication === "appendix").flatMap(({ items }) => items),
+      ],
     },
   ];
 }
@@ -281,7 +335,7 @@ export const bilingualRoutePairs = zhRoutes.map((zh) => {
   return { zh, en };
 });
 
-const collapsedGroups = new Set(["工具箱", "旧文归档", "词表", "Toolkit", "Archive", "Word Lists"]);
+const collapsedGroups = new Set(["工具箱", "创业、自律与 AI 实操", "旧文归档", "词表", "Toolkit", "Business, Discipline, and AI Practice", "Archive", "Word Lists"]);
 
 export function toSidebar(groups) {
   return groups.map(({ text, items }) => ({

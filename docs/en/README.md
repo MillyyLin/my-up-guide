@@ -1,7 +1,7 @@
 ---
 title: "Life Level-up Guide | Lifelong Learning in the AI Era"
 description: Learning continuously in the AI era, Life Level-up Guide helps ordinary people complete real projects, move through difficult seasons, and preserve evidence of growth.
-updated: 2026-09-02
+updated: 2026-09-19
 ---
 
 # Life Level-up Guide
@@ -63,6 +63,16 @@ It also keeps three kinds of claim separate:
     <a class="guide-path" href="https://t.me/OpenHuge_ai" target="_blank" rel="noopener noreferrer"><strong>AI Resources on Telegram: OpenHuge_ai</strong>A third-party Telegram channel for discovering AI resources. Channel posts, outbound links, and availability can change; verify sources, privacy, copyright, and security risks before use.</a>
   </div></section>
 </div>
+
+## Business, Discipline, and AI in Practice
+
+Use the [Practice Map](practice.md) to choose a current problem and turn reading into a small experiment with inspectable results. These handbooks complement the five-part book and are included in its digital appendices.
+
+| Current task | Practical handbook | Copyable tool |
+| --- | --- | --- |
+| A business idea without customer evidence | [From Problems to First Customers](threads/practice/customer-discovery.md) · [A Sustainable Small Business](threads/practice/sustainable-business.md) | [Startup Experiment](templates/startup-experiment.md) |
+| Trouble starting or returning after a break | [Discipline and Consistency](threads/practice/discipline-and-consistency.md) | [Consistency Plan](templates/consistency-plan.md) |
+| AI generates output but delivery is unreliable | [AI Workflows](threads/practice/ai-workflows.md) · [AI Evaluation and Reliability](threads/practice/ai-evaluation.md) | [AI Evaluation Record](templates/ai-evaluation.md) |
 
 ## Book Structure
 

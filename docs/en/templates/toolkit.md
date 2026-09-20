@@ -1,7 +1,7 @@
 ---
 title: "Toolkit Overview: Choose the Problem Before the Tool"
 description: "Route every template by starting point, skill practice, AI collaboration, artifact delivery, review, and recovery so a reader can build one complete action loop with minimal record-keeping."
-updated: 2026-09-02
+updated: 2026-09-19
 ---
 
 # Toolkit Overview: Choose the Problem Before the Tool
@@ -32,6 +32,9 @@ If you do not know where to begin, choose one sheet. An incomplete sheet used on
 | I have an idea but no deliverable | [Artifact Brief and Delivery Card](artifact-brief.md) | [AI Project Scorecard](ai-project-scorecard.md) | It cannot find users, carry responsibility, or prove a commercial result |
 | I want to analyse a person or project story | [AI Case Review](ai-case-review.md) | [Narrative and Evidence](../threads/part-2/narrative-and-evidence.md) | It cannot turn a public narrative into an independent audit |
 | I am handling a decision, attention, relationship, or recovery problem | [Life Practice Toolkit](life-practice-toolkit.md) | [Decision-Making](../threads/part-2/decision.md) · [Attention](../threads/part-3/3-attention-and-judgment.md) · [Relationships](../threads/part-2/relationships.md) · [Recovery](../threads/part-2/recovery.md) | It cannot replace medical, psychological, legal, or financial support |
+| Testing a business idea before adding features | [Startup Experiment](startup-experiment.md) | [Customer Discovery](../threads/practice/customer-discovery.md) | Praise, a free trial, or one payment does not establish sustainable demand |
+| Diagnosing a blocked start or restarting once | [Consistency Plan](consistency-plan.md) | [Discipline and Consistency](../threads/practice/discipline-and-consistency.md) | One interruption does not establish a failure of character or willpower |
+| Deciding whether an AI version can deliver | [AI Evaluation Record](ai-evaluation.md) | [AI Evaluation and Reliability](../threads/practice/ai-evaluation.md) | A small sample or human-repaired accuracy cannot guarantee production reliability |
 
 ## Connect the Tools into One Loop
 

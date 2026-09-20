@@ -1,7 +1,7 @@
 ---
 title: "Learning Anything with AI: From Real Problems to Verifiable Delivery"
 description: Based on Han Xiankai's product failure, recovery, and return to AI practice, this chapter builds a practical loop of problems, baselines, practice, delivery, verification, and review.
-updated: 2026-09-01
+updated: 2026-09-19
 sources_checked: 2026-08-24
 ---
 
@@ -10,6 +10,8 @@ sources_checked: 2026-08-24
 My name is Han Xiankai, also known online as Li Pu. Many readers first met me through English learning, then through stories about software, restaurants, a failed company, disrupted health, and a return to technology and AI. I now treat AI as learning infrastructure, not a button that thinks on my behalf.
 
 The method comes from an uncomfortable fact: an answer can be complete while a product has no users; code can run while its data and security have no foundation; a person can sound clever in a chat and still be unable to perform alone after the chat closes. A real learning result survives without AI: you can explain, judge, perform, transfer, and leave evidence another person can inspect.
+
+For repeatable AI-assisted tasks, continue to [AI Workflows](../practice/ai-workflows.md). Before comparing versions or delivering to others, use an [AI Evaluation Record](../../templates/ai-evaluation.md) to retain failures, human revisions, and costs.
 
 ## Quick Overview
 

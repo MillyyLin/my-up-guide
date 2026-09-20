@@ -85,7 +85,19 @@
 - [AI 学习记录](templates/ai-learning-log.md)
 - [AI 经历案例复盘](templates/ai-case-review.md)
 - [AI 项目评分卡](templates/ai-project-scorecard.md)
+- [创业实验卡](templates/startup-experiment.md)
+- [持续行动计划](templates/consistency-plan.md)
+- [AI 评测记录](templates/ai-evaluation.md)
 - [生活进阶工作表](templates/life-practice-toolkit.md)
+
+## 创业、自律与 AI 实操
+
+- [实践路线图](practice.md)
+- [从问题到首批用户](threads/practice/customer-discovery.md)
+- [可持续的小生意](threads/practice/sustainable-business.md)
+- [自律与坚持实操](threads/practice/discipline-and-consistency.md)
+- [AI 工作流](threads/practice/ai-workflows.md)
+- [AI 评测与可靠性](threads/practice/ai-evaluation.md)
 
 ## 旧文归档
 

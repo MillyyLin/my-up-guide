@@ -1,7 +1,7 @@
 ---
 title: "Rhythm: Let Small Things Travel Through Time"
 description: "A bridge between the daily system and the 90-day plan, explaining how repetition, feedback, interruption, and recovery create sustainable compounding."
-updated: 2026-09-01
+updated: 2026-09-19
 ---
 
 # Rhythm: Let Small Things Travel Through Time
@@ -141,6 +141,8 @@ One number I will stop tracking:
 ```
 
 The last line matters. Every record costs attention; removing a number that cannot guide a decision is part of rhythm design. If you update a table every day but have no first version, feedback, or retest, shorten the record and return the time to action. For a copy-ready version, open the [Rhythm Ledger Template](../../templates/rhythm-ledger.md).
+
+To turn one obstacle in the ledger into action, use the troubleshooting table and worked examples in [Discipline and Consistency in Practice](../practice/discipline-and-consistency.md). Record one change, its effort limit, and its result in a [Consistency Plan](../../templates/consistency-plan.md). The examples put this chapter's rhythm into practice; return to the ledger when the experiment ends.
 
 ## 8. A 14-Day Rhythm Experiment
 

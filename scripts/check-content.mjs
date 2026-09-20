@@ -10,6 +10,14 @@ import {
 import { basename, dirname, extname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
+import { enNavigation, zhNavigation } from "../docs/.vitepress/navigation.mjs";
+import {
+  frontmatterProblems,
+  linkProblems,
+  navigationProblems,
+  parseFrontmatter as parseFrontmatterText,
+} from "./lib/content-checks.mjs";
+import { repositoryReadmeFromDocs } from "./lib/readme.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const DOCS = join(ROOT, "docs");
@@ -19,6 +27,7 @@ const IGNORE_DIRS = new Set([
   "node_modules",
   "dist",
   ".cache",
+  "cache",
   ".codex-artifact-work",
   "outputs",
   "playwright-report",
@@ -28,25 +37,6 @@ const PUBLIC_IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".avi
 const PUBLIC_ASSET_EXTENSIONS = new Set([...PUBLIC_IMAGE_EXTENSIONS, ".svg"]);
 const TEXT_SOURCE_EXTENSIONS = new Set([".md", ".mjs", ".mts", ".ts", ".css"]);
 const FORBIDDEN_TRACKED_NAMES = new Set([".DS_Store", "Thumbs.db", "desktop.ini"]);
-const PUBLICATION_TIME_ZONE = "Asia/Shanghai";
-
-function dateInTimeZone(timeZone) {
-  const values = Object.fromEntries(
-    new Intl.DateTimeFormat("en-US", {
-      timeZone,
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    })
-      .formatToParts(new Date())
-      .filter(({ type }) => type !== "literal")
-      .map(({ type, value }) => [type, value]),
-  );
-  return `${values.year}-${values.month}-${values.day}`;
-}
-
-const publicationToday = dateInTimeZone(PUBLICATION_TIME_ZONE);
-
 function addError(file, line, message) {
   errors.push({ file: relative(ROOT, file), line, message });
 }
@@ -62,158 +52,30 @@ function walk(dir, extensions, output = []) {
   return output;
 }
 
-const isExternal = (target) =>
-  /^(https?:|mailto:|tel:|data:|\/\/)/i.test(target);
-
-function stripOptionalTitle(target) {
-  return target.replace(/\s+["'].*$/, "").trim();
-}
-
-function routeToFile(route) {
-  const clean = route
-    .replace(/^\/+/, "")
-    .replace(/\/$/, "")
-    .replace(/\/index$/, "")
-    .replace(/\/README$/, "");
-  if (!clean) return join(DOCS, "README.md");
-  return join(DOCS, `${clean}.md`);
-}
-
-function resolveTarget(file, rawTarget) {
-  let target = stripOptionalTitle(rawTarget);
-  if (!target || isExternal(target) || target.startsWith("#")) return null;
-  const pathPart = target.split("#")[0].split("?")[0];
-  if (!pathPart) return null;
-  if (pathPart.startsWith("/")) return routeToFile(pathPart);
-  try {
-    return resolve(dirname(file), decodeURIComponent(pathPart));
-  } catch {
-    return resolve(dirname(file), pathPart);
-  }
-}
-
-function localTargetExists(path) {
-  if (existsSync(path)) return true;
-  if (path.startsWith(`${DOCS}${sep}`)) {
-    const publicPath = join(DOCS, "public", relative(DOCS, path));
-    if (existsSync(publicPath)) return true;
-  }
-  if (!extname(path) && existsSync(`${path}.md`)) return true;
-  if (!extname(path) && existsSync(join(path, "README.md"))) return true;
-  return false;
-}
-
-const MARKDOWN_LINK = /(!?)\[([^\]]*)\]\(([^)]+)\)/g;
-const HTML_HREF = /href\s*=\s*["']([^"']+)["']/gi;
-const HTML_IMAGE = /<img\b([^>]*)>/gi;
-const GENERIC_ALT = new Set(["image", "img", "photo", "picture", "hotel", "图片", "照片", "图"]);
-
-function checkAltText(file, line, alt) {
-  if (!alt?.trim()) {
-    addError(file, line, "图片缺少有意义的 alt 文本");
-    return;
-  }
-  if (GENERIC_ALT.has(alt.trim().toLowerCase())) {
-    addError(file, line, `图片 alt 过于泛化: "${alt.trim()}"`);
-  }
-  if (file.startsWith(`${join(DOCS, "en")}${sep}`) && /[\u3400-\u9fff]/.test(alt)) {
-    addError(file, line, "英文页面图片 alt 不应包含中文字符");
-  }
-}
-
 function checkLinksAndAlt(file) {
-  const lines = readFileSync(file, "utf8").split("\n");
-  let inFence = false;
-  lines.forEach((line, index) => {
-    if (/^\s*(```|~~~)/.test(line)) {
-      inFence = !inFence;
-      return;
-    }
-    if (inFence) return;
-
-    const targets = [];
-    MARKDOWN_LINK.lastIndex = 0;
-    let match;
-    while ((match = MARKDOWN_LINK.exec(line))) {
-      if (match[1] === "!") checkAltText(file, index + 1, match[2]);
-      targets.push(match[3]);
-    }
-    HTML_HREF.lastIndex = 0;
-    while ((match = HTML_HREF.exec(line))) targets.push(match[1]);
-    HTML_IMAGE.lastIndex = 0;
-    while ((match = HTML_IMAGE.exec(line))) {
-      const alt = match[1].match(/\balt\s*=\s*["']([^"']*)["']/i)?.[1];
-      checkAltText(file, index + 1, alt);
-    }
-
-    for (const target of targets) {
-      const resolved = resolveTarget(file, target);
-      if (resolved && !localTargetExists(resolved)) {
-        addError(
-          file,
-          index + 1,
-          `链接目标不存在: ${target} -> ${relative(ROOT, resolved)}`,
-        );
-      }
-    }
-  });
+  for (const { line, message } of linkProblems(readFileSync(file, "utf8"), file, DOCS)) {
+    addError(file, line, message);
+  }
 }
 
 function parseFrontmatter(file) {
-  const text = readFileSync(file, "utf8");
-  const block = text.match(/^---\n([\s\S]*?)\n---\n/);
-  if (!block) return null;
-  const values = {};
-  for (const line of block[1].split("\n")) {
-    const match = line.match(/^([a-zA-Z][\w-]*):\s*(.+)$/);
-    if (match) values[match[1]] = match[2].trim().replace(/^['"]|['"]$/g, "");
-  }
-  return values;
+  return parseFrontmatterText(readFileSync(file, "utf8"));
 }
 
 function checkFrontmatter(file) {
   if (file.endsWith("SUMMARY.md")) return;
   const text = readFileSync(file, "utf8");
-  const rawBlock = text.match(/^---\n([\s\S]*?)\n---\n/)?.[1];
+  const rawBlock = text.match(/^\uFEFF?---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)?.[1];
   if (rawBlock) {
-    rawBlock.split("\n").forEach((line, index) => {
+    rawBlock.split(/\r?\n/).forEach((line, index) => {
       const value = line.match(/^[a-zA-Z][\w-]*:\s*(.+)$/)?.[1]?.trim();
       if (value && !/^['"]/.test(value) && /:\s/.test(value)) {
         addError(file, index + 2, "frontmatter 含冒号的文本值必须使用引号");
       }
     });
   }
-  const frontmatter = parseFrontmatter(file);
-  if (!frontmatter) {
-    addError(file, 1, "公开页面缺少 frontmatter");
-    return;
-  }
-  for (const key of ["title", "description", "updated"]) {
-    if (!frontmatter[key]) addError(file, 1, `frontmatter 缺少 ${key}`);
-  }
-  if (/\/(7-ai|1-ai-learning|2-ai-development-and-resource-layer)\.md$/.test(file)) {
-    if (!frontmatter.sources_checked) {
-      addError(file, 1, "AI 页面缺少 sources_checked");
-    } else if (!/^\d{4}-\d{2}-\d{2}$/.test(frontmatter.sources_checked)) {
-      addError(file, 1, "sources_checked 必须使用 YYYY-MM-DD");
-    }
-  }
-  if (frontmatter.updated && !/^\d{4}-\d{2}-\d{2}$/.test(frontmatter.updated)) {
-    addError(file, 1, "updated 必须使用 YYYY-MM-DD");
-  }
-  if (frontmatter.updated && /^\d{4}-\d{2}-\d{2}$/.test(frontmatter.updated)) {
-    if (frontmatter.updated > publicationToday) {
-      addError(file, 1, `updated 不能晚于项目时区 ${PUBLICATION_TIME_ZONE} 的当前日期`);
-    }
-  }
-  if (frontmatter.description && frontmatter.description.length < 24) {
-    addError(file, 1, "description 过短，无法区分页面内容");
-  }
-
-  if (/\/(7-ai|1-ai-learning|2-ai-development-and-resource-layer)\.md$/.test(file) && frontmatter.sources_checked) {
-    const age = Date.now() - Date.parse(`${frontmatter.sources_checked}T00:00:00Z`);
-    const maxAge = 120 * 24 * 60 * 60 * 1000;
-    if (age > maxAge) addError(file, 1, "AI 产品资料超过 120 天未核验");
+  for (const message of frontmatterProblems(text, relative(DOCS, file).split(sep).join("/"))) {
+    addError(file, 1, message);
   }
 }
 
@@ -400,18 +262,6 @@ function checkStaleStrings(markdownFiles) {
   }
 }
 
-function repositoryReadmeFromDocs(source) {
-  return source
-    .replace("中文 | [English](en/)", "中文 | [English](docs/en/README.md)")
-    .replace(/\]\((assets|threads|templates|reference)\//g, "](docs/$1/")
-    .replace(/src="\.\/assets\//g, 'src="./docs/assets/')
-    .replace(/href="\.\/downloads\//g, 'href="./docs/public/downloads/')
-    .replace(/\]\(projects\.md\)/g, "](docs/projects.md)")
-    .replace(/href="\.\/(threads\/[^\"]+|templates\/[^\"]+|projects)"/g, (_match, path) =>
-      `href="./docs/${path}.md"`,
-    );
-}
-
 function checkReadmeMirror() {
   const source = readFileSync(join(DOCS, "README.md"), "utf8");
   const expected = repositoryReadmeFromDocs(source);
@@ -499,6 +349,9 @@ for (const file of markdownFiles.filter((path) => path.startsWith(`${DOCS}/`))) 
 checkBilingualParity(markdownFiles);
 checkHeadingParity(markdownFiles);
 checkUpdatedParity(markdownFiles);
+for (const message of navigationProblems(zhNavigation, enNavigation, DOCS)) {
+  addError(join(DOCS, ".vitepress/navigation.mjs"), 1, message);
+}
 checkStaleStrings(
   markdownFiles.filter(
     (file) =>

@@ -22,6 +22,7 @@ from PIL import Image as PILImage
 from pypdf import PdfReader, __version__ as PYPDF_VERSION
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT
+from reportlab.lib.geomutils import normalizeTRBL
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.utils import ImageReader
 from reportlab.lib.units import inch, mm
@@ -281,6 +282,44 @@ def fit_running_header(text: str, font_name: str, font_size: float, max_width: f
     return ("".join(parts) + suffix) if parts else suffix
 
 
+def wrap_preformatted_text(text: str, style: ParagraphStyle, available_width: float = CONTENT_WIDTH) -> str:
+    """Wrap raw code by rendered width, retaining source characters and indentation."""
+    _, right_padding, _, left_padding = normalizeTRBL(style.borderPadding)
+    max_width = available_width - style.leftIndent - style.rightIndent - left_padding - right_padding
+    if max_width <= 0:
+        raise ValueError("Preformatted text has no usable width")
+    width = lambda value: pdfmetrics.stringWidth(value, style.fontName, style.fontSize)
+    lines = []
+    for original in text.replace("\t", "    ").split("\n"):
+        if not original:
+            lines.append("")
+            continue
+        indentation = re.match(r" *", original).group()
+        # Extremely deep indentation must not consume the entire continuation line.
+        continuation = indentation if width(indentation) < max_width / 2 else ""
+        remaining = original
+        prefix = ""
+        while remaining:
+            budget = max_width - width(prefix)
+            lower, upper = 0, len(remaining)
+            while lower < upper:
+                middle = (lower + upper + 1) // 2
+                if width(remaining[:middle]) <= budget:
+                    lower = middle
+                else:
+                    upper = middle - 1
+            if not lower:
+                raise ValueError("Preformatted text contains a character wider than its frame")
+            if lower < len(remaining):
+                boundary = remaining.rfind(" ", 0, lower) + 1
+                if boundary > len(remaining) - len(remaining.lstrip(" ")):
+                    lower = boundary
+            lines.append(prefix + remaining[:lower])
+            remaining = remaining[lower:]
+            prefix = continuation
+    return "\n".join(lines)
+
+
 class InvariantCanvas(canvas.Canvas):
     def __init__(self, *args, metadata: dict[str, str], **kwargs):
         kwargs["invariant"] = 1
@@ -507,6 +546,9 @@ def style_sheet(edition: Edition) -> dict[str, ParagraphStyle]:
             spaceAfter=9,
         ),
     }
+    if edition.key == "zh":
+        for heading in ("h1", "h2", "h3", "h4"):
+            styles[heading].wordWrap = "CJK"
     return styles
 
 
@@ -715,7 +757,7 @@ def convert_children(parent: ET.Element, extracted_root: Path, current_file: str
             flowables.append(build_table(element, styles, edition, current_file, h1_anchors))
             flowables.append(Spacer(1, 6))
         elif tag == "pre":
-            text = "".join(element.itertext()).replace("\t", "    ")
+            text = wrap_preformatted_text("".join(element.itertext()), styles["code"])
             flowables.append(XPreformatted(html.escape(text), styles["code"]))
         elif tag == "img":
             flowables.extend(image_flowables(element, extracted_root, current_file, styles))

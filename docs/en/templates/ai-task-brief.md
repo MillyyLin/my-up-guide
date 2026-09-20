@@ -1,7 +1,7 @@
 ---
 title: "AI Task Brief: From Problem to Human Acceptance"
 description: Before an AI learning or project task, define the real action, data boundary, sources, evaluation set, human ownership, cost, failure handling, and handover.
-updated: 2026-09-02
+updated: 2026-09-20
 ---
 
 # AI Task Brief: From Problem to Human Acceptance
@@ -76,6 +76,8 @@ AI may not: make final factual decisions / invent sources / approve for the owne
              / publish or execute automatically
 Mode: diagnosis / assistance / candidate generation / batch processing / other
 Model, version, region, and call date:
+External tools, MCP servers, or other protocols and versions:
+Read/write scope, authorizer, and revocation method for each tool:
 Prompt, system instruction, or workflow version location:
 ```
 
@@ -90,6 +92,7 @@ Ask the model to restate goal, input, limits, unknowns, and acceptance before ge
 | Privacy/permission gate | | Scope, consent, access record | Stop and redact |
 | Quality gate | | Evaluation set, edge cases, real feedback | Repair, narrow, or reject |
 | Cost gate | | Tokens, time, human rework, budget | Downgrade or stop |
+| Tool authorization gate | | Tool scope, call record, named authorization, and revocation method | Block the call or return to a person |
 | Ownership gate | | Named approval and disclosure | Do not publish or execute |
 
 Critical decisions cannot be approved only by the generator, an automated score, or one developer alone. High-risk domains return to current primary sources and qualified professionals.

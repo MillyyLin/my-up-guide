@@ -1,7 +1,7 @@
 ---
 title: 人生进阶指南｜AI 时代终身学习
 description: 《人生进阶指南》帮助普通人在 AI 时代持续学习、完成真实项目、穿越人生低谷并留下成长证据。
-updated: 2026-09-02
+updated: 2026-09-19
 ---
 
 # 人生进阶指南
@@ -75,6 +75,16 @@ AI 正在让答案变得前所未有地廉价。几秒钟里，我们可以得�
     </div>
   </section>
 </div>
+
+## 创业、自律与 AI：把方法用起来
+
+从[实践路线图](practice.md)选择当前卡点，用一次小实验把阅读推进到可核对的结果。实操手册与原有五部主线配合使用，也收录于电子书附录。
+
+| 当前任务 | 实操入口 | 可复制工具 |
+| --- | --- | --- |
+| 创业想法还没有用户证据 | [从问题到首批用户](threads/practice/customer-discovery.md) · [可持续的小生意](threads/practice/sustainable-business.md) | [创业实验卡](templates/startup-experiment.md) |
+| 开始困难，或中断后回不来 | [自律与坚持实操](threads/practice/discipline-and-consistency.md) | [持续行动计划](templates/consistency-plan.md) |
+| AI 能生成，但交付不稳定 | [AI 工作流](threads/practice/ai-workflows.md) · [AI 评测与可靠性](threads/practice/ai-evaluation.md) | [AI 评测记录](templates/ai-evaluation.md) |
 
 ## 书稿主线
 
