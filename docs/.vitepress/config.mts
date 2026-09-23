@@ -6,7 +6,7 @@ import { defineConfig } from "vitepress";
 import { bilingualRoutePairs, enNavigation, toSidebar, zhNavigation } from "./navigation.mjs";
 
 const origin = "https://byoungd.github.io";
-const base = "/up/";
+const base = "/MillyLin/";
 const siteUrl = `${origin}${base}`;
 const configDir = dirname(fileURLToPath(import.meta.url));
 const docsDir = resolve(configDir, "..");
