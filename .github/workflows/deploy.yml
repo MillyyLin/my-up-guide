@@ -2,7 +2,7 @@ name: Deploy GitHub Pages
 
 on:
   push:
-    branches: [codex/learning-practice-expansio]
+    branches: [codex/learning-practice-expansion]
   workflow_dispatch:
 
 permissions:
